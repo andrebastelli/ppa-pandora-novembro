@@ -28,6 +28,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { eventConfig } from "@/lib/event-config";
+import { Reveal, CountUp } from "@/components/motion";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -192,23 +193,27 @@ function Index() {
 
       {/* PROPOSAL */}
       <section className="bg-gradient-soft py-16 sm:py-20">
-        <div className="mx-auto max-w-5xl px-6 text-center">
+        <Reveal className="mx-auto max-w-5xl px-6 text-center">
           <span className="text-sm font-bold uppercase tracking-wider text-brand-orange">{cfg.proposal.label}</span>
           <h2 className="mt-3 text-3xl font-extrabold text-white sm:text-4xl">{cfg.proposal.title}</h2>
           <p className="mt-5 text-lg text-white/75">{cfg.proposal.text}</p>
 
           <div className="mt-12 grid gap-6 sm:grid-cols-3">
-            {cfg.proposal.features.map((f) => {
+            {cfg.proposal.features.map((f, i) => {
               const Icon = iconMap[f.icon];
-              return <Feature key={f.title} icon={Icon ? <Icon className="h-6 w-6" /> : null} title={f.title} text={f.text} />;
+              return (
+                <Reveal key={f.title} delay={i * 120}>
+                  <Feature icon={Icon ? <Icon className="h-6 w-6" /> : null} title={f.title} text={f.text} />
+                </Reveal>
+              );
             })}
           </div>
-        </div>
+        </Reveal>
       </section>
 
       {/* VIDEO */}
       <section className="bg-white py-16 sm:py-20">
-        <div className="mx-auto max-w-5xl px-6">
+        <Reveal className="mx-auto max-w-5xl px-6">
           <div className="mb-8 text-center">
             <h2 className="text-3xl font-extrabold text-brand-dark sm:text-4xl">{cfg.video.title}</h2>
             <p className="mt-3 text-muted-foreground">{cfg.video.subtitle}</p>
@@ -223,12 +228,12 @@ function Index() {
               loading="lazy"
             />
           </div>
-        </div>
+        </Reveal>
       </section>
 
       {/* ABOUT */}
       <section className="bg-brand-dark py-16 text-white sm:py-20">
-        <div className="mx-auto grid max-w-6xl gap-10 px-6 lg:grid-cols-2 lg:items-center">
+        <Reveal className="mx-auto grid max-w-6xl gap-10 px-6 lg:grid-cols-2 lg:items-center">
           <div>
             <span className="text-sm font-bold uppercase tracking-wider text-brand-orange">{cfg.about.label}</span>
             <h2 className="mt-3 text-3xl font-extrabold sm:text-4xl">{cfg.about.title}</h2>
@@ -244,12 +249,12 @@ function Index() {
               Quero minha vaga
             </a>
           </div>
-        </div>
+        </Reveal>
       </section>
 
       {/* FORMATOS */}
       <section className="bg-white py-16 sm:py-20">
-        <div className="mx-auto max-w-5xl px-6">
+        <Reveal className="mx-auto max-w-5xl px-6">
           <div className="text-center">
             <span className="text-sm font-bold uppercase tracking-wider text-brand-orange">Escolha como participar</span>
             <h2 className="mt-3 text-3xl font-extrabold text-brand-dark sm:text-4xl">Online ou presencial: você decide</h2>
@@ -273,12 +278,12 @@ function Index() {
               </div>
             ))}
           </div>
-        </div>
+        </Reveal>
       </section>
 
       {/* EVENT DETAILS */}
       <section className="bg-gradient-soft py-16 sm:py-20">
-        <div className="mx-auto max-w-6xl px-6">
+        <Reveal className="mx-auto max-w-6xl px-6">
           <div className="text-center">
             <span className="text-sm font-bold uppercase tracking-wider text-brand-orange">O dia do evento</span>
             <h2 className="mt-3 text-3xl font-extrabold text-white sm:text-4xl">Como vai funcionar o Portas Abertas</h2>
@@ -288,16 +293,18 @@ function Index() {
           </div>
 
           <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {cfg.event.schedule.map((s) => (
-              <Feature key={s.time} icon={<Clock className="h-6 w-6" />} title={`${s.time}, ${s.title}`} text={s.text} />
+            {cfg.event.schedule.map((s, i) => (
+              <Reveal key={s.time} delay={i * 120}>
+                <Feature icon={<Clock className="h-6 w-6" />} title={`${s.time}, ${s.title}`} text={s.text} />
+              </Reveal>
             ))}
           </div>
-        </div>
+        </Reveal>
       </section>
 
       {/* TESTIMONIALS */}
       <section className="bg-white py-16 sm:py-20">
-        <div className="mx-auto max-w-6xl px-6">
+        <Reveal className="mx-auto max-w-6xl px-6">
           <div className="text-center">
             <span className="text-sm font-bold uppercase tracking-wider text-brand-orange">Quem já vive o .pandora</span>
             <h2 className="mt-3 text-3xl font-extrabold text-brand-dark sm:text-4xl">Famílias que confiaram e recomendam</h2>
@@ -339,12 +346,12 @@ function Index() {
               </div>
             </Carousel>
           </div>
-        </div>
+        </Reveal>
       </section>
 
       {/* FAQ */}
       <section className="bg-gradient-soft py-16 sm:py-20">
-        <div className="mx-auto max-w-3xl px-6">
+        <Reveal className="mx-auto max-w-3xl px-6">
           <div className="text-center">
             <span className="text-sm font-bold uppercase tracking-wider text-brand-orange">Perguntas frequentes</span>
             <h2 className="mt-3 text-3xl font-extrabold text-white sm:text-4xl">Tire suas dúvidas</h2>
@@ -360,22 +367,22 @@ function Index() {
               </AccordionItem>
             ))}
           </Accordion>
-        </div>
+        </Reveal>
       </section>
 
       {/* GUARANTEES */}
       <section className="bg-white py-12">
-        <div className="mx-auto grid max-w-6xl gap-6 px-6 sm:grid-cols-3">
+        <Reveal className="mx-auto grid max-w-6xl gap-6 px-6 sm:grid-cols-3">
           {cfg.guarantees.map((g) => {
             const Icon = iconMap[g.icon];
             return <Guarantee key={g.title} icon={Icon ? <Icon className="h-5 w-5" /> : null} title={g.title} text={g.text} />;
           })}
-        </div>
+        </Reveal>
       </section>
 
       {/* FINAL CTA */}
       <section className="bg-[#081037] py-16 text-white sm:py-20">
-        <div className="mx-auto max-w-3xl px-6 text-center">
+        <Reveal className="mx-auto max-w-3xl px-6 text-center">
           <h2 className="text-3xl font-extrabold sm:text-4xl">Vagas limitadas, não deixe para depois</h2>
           <p className="mt-4 text-white/90">
             Reserve agora seu lugar no Portas Abertas e garanta as condições especiais de matrícula para {cfg.event.year}.
@@ -387,7 +394,7 @@ function Index() {
             Quero garantir minha vaga
           </a>
           <p className="mt-4 text-xs text-white/80">{cfg.event.fullDate}</p>
-        </div>
+        </Reveal>
       </section>
 
       {/* FOOTER */}
@@ -423,7 +430,7 @@ function Pill({ icon, label }: { icon: React.ReactNode; label: string }) {
 function Stat({ value, label }: { value: string; label: string }) {
   return (
     <div className="text-center">
-      <div className="text-3xl font-extrabold text-brand-orange sm:text-4xl">{value}</div>
+      <div className="text-3xl font-extrabold text-brand-orange sm:text-4xl"><CountUp value={value} /></div>
       <div className="mt-1 text-xs uppercase tracking-wider text-muted-foreground">{label}</div>
     </div>
   );
