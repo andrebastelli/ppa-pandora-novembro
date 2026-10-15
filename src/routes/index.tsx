@@ -86,10 +86,10 @@ function Index() {
         <div className="absolute inset-0 opacity-10 [background-image:radial-gradient(circle_at_20%_20%,white,transparent_40%),radial-gradient(circle_at_80%_60%,white,transparent_35%)]" />
         <div className="relative mx-auto grid max-w-7xl gap-10 px-6 py-12 lg:grid-cols-[1.1fr_1fr] lg:gap-16 lg:py-20">
           <div className="flex flex-col justify-center">
-            <span className="mb-4 inline-flex w-fit items-center gap-2 rounded-full bg-brand-blue-mid/10 px-4 py-1.5 text-sm font-semibold backdrop-blur text-brand-blue-mid">
+            <span className="mb-4 inline-flex w-fit items-center gap-2 rounded-full bg-[#081037] px-4 py-1.5 text-sm font-semibold text-white">
               <span className="relative flex h-2.5 w-2.5">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-blue-mid opacity-80" />
-                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-brand-blue-mid" />
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-orange opacity-80" />
+                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-brand-orange" />
               </span>
               <Sparkles className="h-4 w-4" /> {cfg.hero.badge}
             </span>
@@ -194,8 +194,8 @@ function Index() {
       <section className="bg-gradient-soft py-16 sm:py-20">
         <div className="mx-auto max-w-5xl px-6 text-center">
           <span className="text-sm font-bold uppercase tracking-wider text-brand-orange">{cfg.proposal.label}</span>
-          <h2 className="mt-3 text-3xl font-extrabold text-brand-dark sm:text-4xl">{cfg.proposal.title}</h2>
-          <p className="mt-5 text-lg text-muted-foreground">{cfg.proposal.text}</p>
+          <h2 className="mt-3 text-3xl font-extrabold text-white sm:text-4xl">{cfg.proposal.title}</h2>
+          <p className="mt-5 text-lg text-white/75">{cfg.proposal.text}</p>
 
           <div className="mt-12 grid gap-6 sm:grid-cols-3">
             {cfg.proposal.features.map((f) => {
@@ -261,9 +261,9 @@ function Index() {
                 <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-orange text-white">
                   {f.type === "Online" ? <Monitor className="h-6 w-6" /> : <School className="h-6 w-6" />}
                 </div>
-                <h3 className="mt-5 text-2xl font-extrabold text-brand-dark">{f.type}</h3>
-                <p className="mt-1 text-lg font-bold text-brand-blue-mid">{f.weekday}, {f.date} · {f.time}</p>
-                <p className="mt-3 flex-1 text-muted-foreground">{f.text}</p>
+                <h3 className="mt-5 text-2xl font-extrabold text-white">{f.type}</h3>
+                <p className="mt-1 text-lg font-bold text-brand-orange">{f.weekday}, {f.date} · {f.time}</p>
+                <p className="mt-3 flex-1 text-white/75">{f.text}</p>
                 <a
                   href={`#${cfg.event.formAnchor}`}
                   className="mt-6 inline-flex items-center justify-center rounded-full bg-brand-orange px-6 py-3 text-sm font-extrabold uppercase tracking-wider text-white shadow-card transition-transform hover:-translate-y-0.5"
@@ -281,8 +281,8 @@ function Index() {
         <div className="mx-auto max-w-6xl px-6">
           <div className="text-center">
             <span className="text-sm font-bold uppercase tracking-wider text-brand-orange">O dia do evento</span>
-            <h2 className="mt-3 text-3xl font-extrabold text-brand-dark sm:text-4xl">Como vai funcionar o Portas Abertas</h2>
-            <p className="mt-3 text-muted-foreground">
+            <h2 className="mt-3 text-3xl font-extrabold text-white sm:text-4xl">Como vai funcionar o Portas Abertas</h2>
+            <p className="mt-3 text-white/75">
               Um encontro pensado para você sentir, na prática, o que é estudar no {cfg.school.shortName}.
             </p>
           </div>
@@ -314,20 +314,20 @@ function Index() {
               <CarouselContent>
                 {cfg.testimonials.map((t) => (
                   <CarouselItem key={t.name} className="basis-full">
-                    <div className="mx-auto rounded-3xl bg-[#D6EFFF] p-6 sm:p-8 shadow-sm min-h-[400px] flex flex-col justify-between">
+                    <div className="mx-auto rounded-3xl bg-[#081037] p-6 sm:p-8 shadow-sm min-h-[400px] flex flex-col justify-between">
                       <div>
                         <div className="mb-6 flex justify-center gap-1 text-brand-orange">
                           {Array.from({ length: 5 }).map((_, i) => (
                             <Star key={i} className="h-5 w-5 fill-current" />
                           ))}
                         </div>
-                        <p className="text-center text-base sm:text-lg italic text-brand-dark leading-relaxed font-medium">
+                        <p className="text-center text-base sm:text-lg italic text-white leading-relaxed font-medium">
                           "{t.quote}"
                         </p>
                       </div>
                       <div className="mt-6 text-center">
-                        <p className="font-extrabold text-brand-dark text-lg">{t.name}</p>
-                        <p className="text-sm text-muted-foreground">{t.role}</p>
+                        <p className="font-extrabold text-white text-lg">{t.name}</p>
+                        <p className="text-sm text-white/70">{t.role}</p>
                       </div>
                     </div>
                   </CarouselItem>
@@ -347,7 +347,7 @@ function Index() {
         <div className="mx-auto max-w-3xl px-6">
           <div className="text-center">
             <span className="text-sm font-bold uppercase tracking-wider text-brand-orange">Perguntas frequentes</span>
-            <h2 className="mt-3 text-3xl font-extrabold text-brand-dark sm:text-4xl">Tire suas dúvidas</h2>
+            <h2 className="mt-3 text-3xl font-extrabold text-white sm:text-4xl">Tire suas dúvidas</h2>
           </div>
 
           <Accordion type="single" collapsible className="mt-10 space-y-3">
@@ -414,7 +414,7 @@ function Index() {
 
 function Pill({ icon, label }: { icon: React.ReactNode; label: string }) {
   return (
-    <span className="inline-flex items-center gap-2 rounded-full bg-brand-blue-mid/10 px-4 py-2 text-sm font-bold text-brand-blue-dark">
+    <span className="inline-flex items-center gap-2 rounded-full bg-[#081037] px-4 py-2 text-sm font-bold text-white">
       {icon} {label}
     </span>
   );
@@ -432,7 +432,7 @@ function Stat({ value, label }: { value: string; label: string }) {
 function Feature({ icon, title, text }: { icon: React.ReactNode; title: string; text: string }) {
   return (
     <div className="rounded-2xl bg-white p-6 text-left shadow-card">
-      <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand-blue-light text-brand-blue-mid">{icon}</div>
+      <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand-blue-light text-white">{icon}</div>
       <h3 className="text-lg font-extrabold text-brand-dark">{title}</h3>
       <p className="mt-2 text-sm text-muted-foreground">{text}</p>
     </div>
@@ -442,7 +442,7 @@ function Feature({ icon, title, text }: { icon: React.ReactNode; title: string; 
 function Guarantee({ icon, title, text }: { icon: React.ReactNode; title: string; text: string }) {
   return (
     <div className="flex items-start gap-4 rounded-2xl border bg-white p-5">
-      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-blue-light text-brand-blue-mid">{icon}</div>
+      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-blue-light text-white">{icon}</div>
       <div>
         <p className="font-extrabold text-brand-dark">{title}</p>
         <p className="mt-1 text-sm text-muted-foreground">{text}</p>

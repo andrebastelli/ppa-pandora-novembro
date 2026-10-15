@@ -69,12 +69,12 @@
   --background: oklch(1 0 0);
   --foreground: oklch(0.15 0.08 245);
   --brand-orange: oklch(0.68 0.16 45);
-  --brand-blue-light: oklch(0.85 0.08 235);
+  --brand-blue-light: #081037;
   --brand-blue-mid: oklch(0.45 0.15 245);
   --brand-blue-dark: oklch(0.20 0.10 250);
   --brand-dark: oklch(0.20 0.10 250);
-  --gradient-hero: linear-gradient(135deg, oklch(0.85 0.08 235) 0%, oklch(0.45 0.15 245) 100%);
-  --gradient-soft: linear-gradient(180deg, oklch(0.92 0.05 235) 0%, oklch(0.88 0.07 240) 100%);
+  --gradient-hero: linear-gradient(135deg, #081037 0%, oklch(0.45 0.15 245) 100%);
+  --gradient-soft: linear-gradient(180deg, #081037 0%, #081037 100%);
   --shadow-glow: 0 20px 60px -15px oklch(0.45 0.15 245 / 0.4);
   --shadow-card: 0 10px 40px -10px oklch(0.20 0.10 250 / 0.1);
   --card: oklch(1 0 0);
