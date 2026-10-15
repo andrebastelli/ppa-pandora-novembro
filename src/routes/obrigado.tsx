@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { CheckCircle2, Monitor, School, Phone, MapPin, ArrowLeft } from "lucide-react";
 import { eventConfig } from "@/lib/event-config";
 import { Reveal } from "@/components/motion";
+import { AddToCalendar } from "@/components/AddToCalendar";
 
 export const Route = createFileRoute("/obrigado")({
   head: () => ({
@@ -22,9 +23,9 @@ function Obrigado() {
       <div className="bg-[#FF7626] py-3 text-center shadow-sm">
         <div className="mx-auto flex max-w-7xl items-center justify-center px-6">
           <img
-            src="https://ppa.pandoraeducacional.com.br/logopndr.png"
+            src="https://ppamedio.pandoraeducacional.com.br/__l5e/assets-v1/f14aca42-86f4-46dc-9d5e-2fa63c1c38ad/logo-pandora.png"
             alt="Logo .pandora"
-            className="h-10 w-auto brightness-0 invert"
+            className="h-10 w-auto"
           />
         </div>
       </div>
@@ -52,7 +53,7 @@ function Obrigado() {
           <div className="mt-12 grid gap-5 text-left sm:grid-cols-2">
             {cfg.event.formats.map((f, i) => (
               <Reveal key={f.type} delay={150 + i * 120}>
-                <div className="h-full rounded-3xl border border-white/15 bg-white/5 p-6 backdrop-blur">
+                <div className="flex h-full flex-col rounded-3xl border border-white/15 bg-white/5 p-6 backdrop-blur">
                   <div className="flex items-center gap-2 text-sm font-extrabold uppercase tracking-wider text-brand-orange">
                     {f.type === "Online" ? <Monitor className="h-5 w-5" /> : <School className="h-5 w-5" />}
                     {f.type}
@@ -67,6 +68,19 @@ function Obrigado() {
                       <MapPin className="mt-0.5 h-4 w-4 shrink-0" /> {cfg.school.address}
                     </p>
                   )}
+                  <AddToCalendar
+                    event={{
+                      title: `Portas Abertas ${cfg.school.shortName}, ${f.type.toLowerCase()} (Fundamental II)`,
+                      description:
+                        f.type === "Online"
+                          ? `Portas Abertas online do ${cfg.school.shortName}, Ensino Fundamental II. A equipe do ${cfg.school.shortName} envia as informações de acesso. Dúvidas: WhatsApp ${cfg.school.whatsappLabel}.`
+                          : `Portas Abertas presencial do ${cfg.school.shortName}, Ensino Fundamental II. Dúvidas: WhatsApp ${cfg.school.whatsappLabel}.`,
+                      location: f.type === "Online" ? "Online" : `${cfg.school.name}, ${cfg.school.address}`,
+                      startUtc: f.startUtc,
+                      endUtc: f.endUtc,
+                      uid: `ppa-${f.type.toLowerCase()}-${f.startUtc}@pandoraeducacional.com.br`,
+                    }}
+                  />
                 </div>
               </Reveal>
             ))}

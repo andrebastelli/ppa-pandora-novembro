@@ -31,6 +31,8 @@ export const eventConfig = {
         date: "11/11",
         weekday: "Quarta-feira",
         time: "19h",
+        startUtc: "20261111T220000Z",
+        endUtc: "20261112T000000Z",
         text: "Participe de casa, ao vivo, com toda a família. Ideal para quem tem a agenda corrida.",
       },
       {
@@ -38,6 +40,8 @@ export const eventConfig = {
         date: "12/11",
         weekday: "Quinta-feira",
         time: "19h",
+        startUtc: "20261112T220000Z",
+        endUtc: "20261113T000000Z",
         text: "Venha ao colégio, conheça a estrutura de perto e converse com a equipe pessoalmente.",
       },
     ],

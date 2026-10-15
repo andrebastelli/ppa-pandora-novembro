@@ -62,7 +62,7 @@ function Index() {
       {/* TOP BAR */}
       <div className="bg-[#FF7626] py-3 text-center text-white shadow-sm">
         <div className="mx-auto flex max-w-7xl items-center justify-center px-6">
-          <img src="https://ppa.pandoraeducacional.com.br/logopndr.png" alt="Logo .pandora" className="h-10 w-auto brightness-0 invert" />
+          <img src="https://ppamedio.pandoraeducacional.com.br/__l5e/assets-v1/f14aca42-86f4-46dc-9d5e-2fa63c1c38ad/logo-pandora.png" alt="Logo .pandora" className="h-10 w-auto" />
         </div>
       </div>
 
