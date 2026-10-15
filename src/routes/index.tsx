@@ -234,7 +234,7 @@ function Index() {
             <h2 className="mt-3 text-3xl font-extrabold sm:text-4xl">{cfg.about.title}</h2>
             <p className="mt-5 text-white/80">{cfg.about.text}</p>
           </div>
-          <div className="rounded-3xl bg-brand-blue-mid p-8 shadow-glow text-white">
+          <div className="rounded-3xl border border-white/15 bg-[#081037] p-8 shadow-glow text-white">
             <h3 className="text-2xl font-extrabold">{cfg.about.ctaTitle}</h3>
             <p className="mt-2 text-white/90">{cfg.about.ctaText}</p>
             <a
@@ -374,11 +374,11 @@ function Index() {
       </section>
 
       {/* FINAL CTA */}
-      <section className="bg-brand-blue-mid py-16 text-white sm:py-20">
+      <section className="bg-[#081037] py-16 text-white sm:py-20">
         <div className="mx-auto max-w-3xl px-6 text-center">
           <h2 className="text-3xl font-extrabold sm:text-4xl">Vagas limitadas, não deixe para depois</h2>
           <p className="mt-4 text-white/90">
-            Reserve agora seu lugar no {cfg.event.name} e garanta as condições especiais de matrícula para {cfg.event.year}.
+            Reserve agora seu lugar no Portas Abertas e garanta as condições especiais de matrícula para {cfg.event.year}.
           </p>
           <a
             href={`#${cfg.event.formAnchor}`}
