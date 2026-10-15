@@ -29,6 +29,7 @@ import {
 } from "@/components/ui/carousel";
 import { eventConfig } from "@/lib/event-config";
 import { Reveal, CountUp } from "@/components/motion";
+import { StickyCTA } from "@/components/StickyCTA";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -57,7 +58,7 @@ function Index() {
   const cfg = eventConfig;
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background pb-24 text-foreground lg:pb-0">
       {/* TOP BAR */}
       <div className="bg-[#FF7626] py-3 text-center text-white shadow-sm">
         <div className="mx-auto flex max-w-7xl items-center justify-center px-6">
@@ -156,7 +157,7 @@ function Index() {
           </div>
 
           {/* FORM CARD */}
-          <div className="relative">
+          <div id="inscricao" className="relative scroll-mt-8">
             {/* Ribbon */}
             <div className="absolute -top-4 left-1/2 z-10 -translate-x-1/2">
               <div className="relative rounded-full bg-brand-dark px-5 py-2 text-xs font-extrabold uppercase tracking-widest text-white shadow-glow animate-pulse-ring">
@@ -415,6 +416,8 @@ function Index() {
           </div>
         </div>
       </footer>
+
+      <StickyCTA targetId="inscricao" subtitle="Gratuito · Online 11/11 ou presencial 12/11 · 19h" />
     </div>
   );
 }
