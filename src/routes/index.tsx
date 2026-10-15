@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { RDForm } from "@/components/RDForm";
-import bannerAsset from "@/assets/kv01-03Ago_outdoor_pandora.png.asset.json";
 import {
   Calendar,
   GraduationCap,
@@ -9,6 +8,8 @@ import {
   BookOpen,
   Trophy,
   MapPin,
+  Monitor,
+  School,
   Phone,
   CheckCircle2,
   Clock,
@@ -63,15 +64,21 @@ function Index() {
         </div>
       </div>
 
-      {/* BANNER HIGHLIGHT */}
-      <div className="w-full overflow-hidden bg-white">
-        <img 
-          src={bannerAsset.url} 
-          alt="Matrículas Abertas Fundamental II - .pandora colégio" 
-          className="w-full h-auto block"
-          loading="eager"
-          fetchPriority="high"
-        />
+      {/* BANNER PROVISÓRIO (texto) */}
+      <div className="relative w-full overflow-hidden bg-brand-blue-dark text-white">
+        <div className="absolute inset-0 opacity-60 [background-image:radial-gradient(circle_at_15%_30%,var(--brand-blue-mid),transparent_45%),radial-gradient(circle_at_85%_70%,var(--brand-orange),transparent_40%)]" />
+        <div className="relative mx-auto flex max-w-7xl flex-col items-center gap-3 px-6 py-10 text-center sm:py-14">
+          <span className="text-xs font-extrabold uppercase tracking-[0.25em] text-white/80 sm:text-sm">
+            .pandora de portas abertas
+          </span>
+          <p className="text-3xl font-extrabold leading-tight sm:text-5xl">
+            Matrículas Abertas <span className="text-brand-orange">Fundamental II</span>
+          </p>
+          <div className="mt-2 flex flex-wrap items-center justify-center gap-3 text-sm font-bold sm:text-base">
+            <span className="rounded-full bg-white/15 px-4 py-2 backdrop-blur">11/11 · Online · 19h</span>
+            <span className="rounded-full bg-brand-orange px-4 py-2">12/11 · Presencial · 19h</span>
+          </div>
+        </div>
       </div>
 
       {/* HERO */}
@@ -109,6 +116,26 @@ function Index() {
 
             <p className="mt-8 max-w-xl text-lg text-brand-blue-dark/80 font-medium">{cfg.hero.description}</p>
 
+            {/* ESCOLHA O FORMATO */}
+            <div className="mt-6 grid max-w-xl gap-3 sm:grid-cols-2">
+              {cfg.event.formats.map((f) => (
+                <a
+                  key={f.type}
+                  href={`#${cfg.event.formAnchor}`}
+                  className="group rounded-2xl border-2 border-brand-blue-mid/20 bg-white p-4 transition-colors hover:border-brand-orange"
+                >
+                  <div className="flex items-center gap-2 text-sm font-extrabold uppercase tracking-wider text-brand-orange">
+                    {f.type === "Online" ? <Monitor className="h-5 w-5" /> : <School className="h-5 w-5" />}
+                    {f.type}
+                  </div>
+                  <p className="mt-1 text-2xl font-extrabold text-brand-blue-dark">
+                    {f.date} <span className="text-base font-bold text-brand-blue-dark/70">· {f.time}</span>
+                  </p>
+                  <p className="text-xs font-semibold text-brand-blue-dark/60">{f.weekday}</p>
+                </a>
+              ))}
+            </div>
+
             {/* EXCLUSIVO PRESENCIAL, destaque */}
             <div className="mt-6 max-w-xl rounded-2xl border-2 border-brand-blue-mid/20 bg-white/50 p-5 backdrop-blur-sm">
               <div className="flex items-center gap-2 text-sm font-extrabold uppercase tracking-wider text-brand-blue-dark">
@@ -138,7 +165,7 @@ function Index() {
             <div className="rounded-3xl bg-white p-6 pt-8 shadow-glow sm:p-8 sm:pt-10">
               <div className="mb-5 text-center">
                 <h2 className="text-2xl font-extrabold text-brand-dark sm:text-3xl">Garanta sua vaga</h2>
-                <p className="mt-1 text-sm text-muted-foreground">Inscrição gratuita · Vagas limitadas</p>
+                <p className="mt-1 text-sm text-muted-foreground">Inscrição gratuita · Escolha online (11/11) ou presencial (12/11)</p>
                 <div className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-brand-orange/10 px-3 py-1 text-xs font-bold text-brand-orange">
                   <Sparkles className="h-3.5 w-3.5" /> Acesso às condições exclusivas do evento
                 </div>
@@ -220,6 +247,35 @@ function Index() {
         </div>
       </section>
 
+      {/* FORMATOS */}
+      <section className="bg-white py-16 sm:py-20">
+        <div className="mx-auto max-w-5xl px-6">
+          <div className="text-center">
+            <span className="text-sm font-bold uppercase tracking-wider text-brand-orange">Escolha como participar</span>
+            <h2 className="mt-3 text-3xl font-extrabold text-brand-dark sm:text-4xl">Online ou presencial: você decide</h2>
+            <p className="mt-3 text-muted-foreground">O encontro é praticamente o mesmo nas duas datas. Escolha a que encaixa melhor na rotina da sua família.</p>
+          </div>
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
+            {cfg.event.formats.map((f) => (
+              <div key={f.type} className="flex flex-col rounded-3xl bg-gradient-soft p-8 shadow-card">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-orange text-white">
+                  {f.type === "Online" ? <Monitor className="h-6 w-6" /> : <School className="h-6 w-6" />}
+                </div>
+                <h3 className="mt-5 text-2xl font-extrabold text-brand-dark">{f.type}</h3>
+                <p className="mt-1 text-lg font-bold text-brand-blue-mid">{f.weekday}, {f.date} · {f.time}</p>
+                <p className="mt-3 flex-1 text-muted-foreground">{f.text}</p>
+                <a
+                  href={`#${cfg.event.formAnchor}`}
+                  className="mt-6 inline-flex items-center justify-center rounded-full bg-brand-orange px-6 py-3 text-sm font-extrabold uppercase tracking-wider text-white shadow-card transition-transform hover:-translate-y-0.5"
+                >
+                  Quero participar {f.type === "Online" ? "online" : "presencialmente"}
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* EVENT DETAILS */}
       <section className="bg-gradient-soft py-16 sm:py-20">
         <div className="mx-auto max-w-6xl px-6">
@@ -227,7 +283,7 @@ function Index() {
             <span className="text-sm font-bold uppercase tracking-wider text-brand-orange">O dia do evento</span>
             <h2 className="mt-3 text-3xl font-extrabold text-brand-dark sm:text-4xl">Como vai funcionar o Portas Abertas</h2>
             <p className="mt-3 text-muted-foreground">
-              Uma manhã pensada para você sentir, na prática, o que é estudar no {cfg.school.shortName}.
+              Um encontro pensado para você sentir, na prática, o que é estudar no {cfg.school.shortName}.
             </p>
           </div>
 

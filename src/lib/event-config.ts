@@ -13,23 +13,39 @@ export const eventConfig = {
   event: {
     name: "Matrículas Abertas Fundamental II",
     subtitle: ".pandora de portas abertas! O chão que sustenta o futuro",
-    date: "29 | 08 · SÁB · 9h30",
-    fullDate: "29 de agosto · sábado · 9h30",
+    date: "11 e 12 | 11 · 19h",
+    fullDate: "11/11 (quarta, online) ou 12/11 (quinta, presencial) · às 19h",
     grades: "Fundamental II",
     city: "Limeira",
-    year: 2026,
+    year: 2027,
     formAnchor: "ppa-2026-591c2d899a5f536bef03",
     benefits: [
-      "Tour completo pela estrutura",
+      "Apresentação da proposta pedagógica",
       "Bate-papo com a coordenação",
       "Bolsas e descontos exclusivos",
-      "Brindes para os alunos",
+      "Você escolhe: online ou presencial",
+    ],
+    formats: [
+      {
+        type: "Online",
+        date: "11/11",
+        weekday: "Quarta-feira",
+        time: "19h",
+        text: "Participe de casa, ao vivo, com toda a família. Ideal para quem tem a agenda corrida.",
+      },
+      {
+        type: "Presencial",
+        date: "12/11",
+        weekday: "Quinta-feira",
+        time: "19h",
+        text: "Venha ao colégio, conheça a estrutura de perto e converse com a equipe pessoalmente.",
+      },
     ],
     schedule: [
       {
         time: "Início",
         title: "Recepção",
-        text: "Em clima de integração, nossos alunos e professores recebem as famílias.",
+        text: "Em clima de integração, nossa equipe recebe as famílias, no colégio ou na sala online.",
       },
       {
         time: "Pais",
@@ -38,20 +54,20 @@ export const eventConfig = {
       },
       {
         time: "Filhos",
-        title: "Atividade",
-        text: "Em atividades práticas, os futuros alunos conhecerão o time de professores",
+        title: "Bate-papo",
+        text: "Os futuros alunos conhecem o time de professores e tiram suas dúvidas sobre o dia a dia no .pandora.",
       },
     ],
   },
   hero: {
-    badge: "Matrículas Abertas 2026",
+    badge: "Matrículas Abertas 2027",
     title: ["Matrículas", "ABERTAS", "Fundamental II"],
     highlight: "Fundamental II",
     description:
-      "Famílias presentes ganham bolsas de estudo para o ensino fundamental II.",
+      "Escolha participar online no dia 11/11 ou presencialmente no dia 12/11, às 19h. Famílias participantes ganham bolsas de estudo para o Ensino Fundamental II.",
     exclusivity: {
       label: ".pandora de portas abertas!",
-      text: "O chão que sustenta o futuro. Bolsas de estudo exclusivas para famílias que comparecerem no dia 29/08.",
+      text: "O chão que sustenta o futuro. Bolsas de estudo exclusivas para as famílias que participarem do evento, online (11/11) ou presencial (12/11).",
     },
   },
   proposal: {
@@ -78,7 +94,7 @@ export const eventConfig = {
   },
   video: {
     title: "Conheça o Fundamental .pandora",
-    subtitle: "Veja em 2 minutos como será 2026.",
+    subtitle: "Veja em 2 minutos como é estudar no .pandora.",
     youtubeId: "LDiXiPIlDT8",
   },
   about: {
@@ -87,7 +103,7 @@ export const eventConfig = {
     text: "Fundado em 2007 por professores, o .pandora nasceu como um pré-vestibular inovador e hoje, com Ensino Fundamental anos finais e Médio, atua em 3 cidades: Limeira, Piracicaba e Jundiaí, combinando ensino forte, desenvolvimento pessoal e acompanhamento pedagógico contínuo. Cada aluno é preparado para enfrentar os desafios acadêmicos com autonomia e confiança, mas sem perder a alegria de aprender.",
     ctaTitle: "Não fique de fora",
     ctaText:
-      "29 de agosto, sábado, 9h30. Vagas limitadas e condições especiais para os participantes do Portas Abertas.",
+      "11/11 online ou 12/11 presencial, às 19h. Vagas limitadas e condições especiais para os participantes do Portas Abertas.",
   },
   testimonials: [
     {
@@ -126,10 +142,14 @@ export const eventConfig = {
     },
     {
       q: "Quais são as condições especiais?",
-      a: "Os participantes do Portas Abertas têm acesso a bolsas e descontos exclusivos para a matrícula 2026, com condições válidas apenas durante o evento.",
+      a: "Os participantes do Portas Abertas têm acesso a bolsas e descontos exclusivos para a matrícula 2027, com condições válidas apenas para quem participa do evento.",
     },
     {
-      q: "Onde acontece?",
+      q: "Qual a diferença entre o online e o presencial?",
+      a: "O conteúdo é praticamente o mesmo. No dia 11/11 o encontro é online, ao vivo, e você participa de casa. No dia 12/11 é presencial, no Colégio .pandora. Os dois começam às 19h. É só escolher a opção no formulário de inscrição.",
+    },
+    {
+      q: "Onde acontece o presencial?",
       a: "No Colégio .pandora, Rua Sargento Pierroti, 322, Centro, Limeira. Estacionamento gratuito disponível.",
     },
     {
@@ -155,14 +175,14 @@ export const eventConfig = {
     {
       icon: "Gift",
       title: "Benefícios exclusivos",
-      text: "Bolsas e brindes válidos apenas para quem comparece ao evento.",
+      text: "Bolsas válidas apenas para quem participa do evento, online ou presencial.",
     },
   ],
   meta: {
-    title: "Portas Abertas .pandora, Ensino Fundamental 2026",
+    title: "Portas Abertas .pandora, Ensino Fundamental 2027",
     description:
-      "Conheça o novo Ensino Fundamental do .pandora. 29 de agosto, 9h30. Vagas limitadas e condições especiais para os participantes.",
-    ogTitle: "Portas Abertas .pandora, Fundamental 2026",
-    ogDescription: "Sábado, 29 de agosto às 9h30. Garanta sua vaga e condições especiais.",
+      "Conheça o Ensino Fundamental II do .pandora. Online em 11/11 ou presencial em 12/11, às 19h. Vagas limitadas e condições especiais para os participantes.",
+    ogTitle: "Portas Abertas .pandora, Fundamental 2027",
+    ogDescription: "11/11 online ou 12/11 presencial, às 19h. Garanta sua vaga e condições especiais.",
   },
 };
