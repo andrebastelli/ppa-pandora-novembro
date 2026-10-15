@@ -1,0 +1,396 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { RDForm } from "@/components/RDForm";
+import bannerAsset from "@/assets/kv01-03Ago_outdoor_pandora.png.asset.json";
+import {
+  Calendar,
+  GraduationCap,
+  Sparkles,
+  Users,
+  BookOpen,
+  Trophy,
+  MapPin,
+  Phone,
+  CheckCircle2,
+  Clock,
+  Gift,
+  ShieldCheck,
+  Star,
+  HeartHandshake,
+  type LucideIcon,
+} from "lucide-react";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import { eventConfig } from "@/lib/event-config";
+
+export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: eventConfig.meta.title },
+      { name: "description", content: eventConfig.meta.description },
+      { property: "og:title", content: eventConfig.meta.ogTitle },
+      { property: "og:description", content: eventConfig.meta.ogDescription },
+      { property: "og:image", content: "https://ppa.pandoraeducacional.com.br/logopndr.png" },
+      { name: "twitter:image", content: "https://ppa.pandoraeducacional.com.br/logopndr.png" },
+    ],
+  }),
+  component: Index,
+});
+
+const iconMap: Record<string, LucideIcon> = {
+  BookOpen,
+  Users,
+  Trophy,
+  ShieldCheck,
+  HeartHandshake,
+  Gift,
+};
+
+function Index() {
+  const cfg = eventConfig;
+
+  return (
+    <div className="min-h-screen bg-background text-foreground">
+      {/* TOP BAR */}
+      <div className="bg-[#FF7626] py-3 text-center text-white shadow-sm">
+        <div className="mx-auto flex max-w-7xl items-center justify-center px-6">
+          <img src="https://ppa.pandoraeducacional.com.br/logopndr.png" alt="Logo .pandora" className="h-10 w-auto brightness-0 invert" />
+        </div>
+      </div>
+
+      {/* BANNER HIGHLIGHT */}
+      <div className="w-full overflow-hidden bg-white">
+        <img 
+          src={bannerAsset.url} 
+          alt="Matrículas Abertas Fundamental II - .pandora colégio" 
+          className="w-full h-auto block"
+          loading="eager"
+          fetchPriority="high"
+        />
+      </div>
+
+      {/* HERO */}
+      <header className="relative overflow-hidden bg-white text-brand-blue-dark">
+        <div className="absolute inset-0 opacity-10 [background-image:radial-gradient(circle_at_20%_20%,white,transparent_40%),radial-gradient(circle_at_80%_60%,white,transparent_35%)]" />
+        <div className="relative mx-auto grid max-w-7xl gap-10 px-6 py-12 lg:grid-cols-[1.1fr_1fr] lg:gap-16 lg:py-20">
+          <div className="flex flex-col justify-center">
+            <span className="mb-4 inline-flex w-fit items-center gap-2 rounded-full bg-brand-blue-mid/10 px-4 py-1.5 text-sm font-semibold backdrop-blur text-brand-blue-mid">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-blue-mid opacity-80" />
+                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-brand-blue-mid" />
+              </span>
+              <Sparkles className="h-4 w-4" /> {cfg.hero.badge}
+            </span>
+            <h1 className="text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
+              {cfg.hero.title.map((line, i) => (
+                <span
+                  key={i}
+                  className={
+                    i === cfg.hero.title.length - 1
+                      ? "mt-2 block text-brand-orange sm:text-4xl lg:text-5xl"
+                      : "block text-brand-blue-dark"
+                  }
+                >
+                  {line}
+                </span>
+              ))}
+            </h1>
+
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Pill icon={<Calendar className="h-4 w-4" />} label={cfg.event.date} />
+              <Pill icon={<GraduationCap className="h-4 w-4" />} label={cfg.event.grades} />
+              <Pill icon={<MapPin className="h-4 w-4" />} label={cfg.event.city} />
+            </div>
+
+            <p className="mt-8 max-w-xl text-lg text-brand-blue-dark/80 font-medium">{cfg.hero.description}</p>
+
+            {/* EXCLUSIVO PRESENCIAL, destaque */}
+            <div className="mt-6 max-w-xl rounded-2xl border-2 border-brand-blue-mid/20 bg-white/50 p-5 backdrop-blur-sm">
+              <div className="flex items-center gap-2 text-sm font-extrabold uppercase tracking-wider text-brand-blue-dark">
+                <Gift className="h-5 w-5 text-brand-orange" />
+                {cfg.hero.exclusivity.label}
+              </div>
+              <p className="mt-2 text-brand-blue-dark/90">{cfg.hero.exclusivity.text}</p>
+            </div>
+
+            <ul className="mt-6 grid gap-2 text-brand-blue-dark/90 sm:grid-cols-2">
+              {cfg.event.benefits.map((t) => (
+                <li key={t} className="flex items-center gap-2 text-sm font-medium">
+                  <CheckCircle2 className="h-5 w-5 shrink-0 text-brand-orange" /> {t}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* FORM CARD */}
+          <div className="relative">
+            {/* Ribbon */}
+            <div className="absolute -top-4 left-1/2 z-10 -translate-x-1/2">
+              <div className="relative rounded-full bg-brand-dark px-5 py-2 text-xs font-extrabold uppercase tracking-widest text-white shadow-glow animate-pulse-ring">
+                🔥 Vagas Limitadas
+              </div>
+            </div>
+            <div className="rounded-3xl bg-white p-6 pt-8 shadow-glow sm:p-8 sm:pt-10">
+              <div className="mb-5 text-center">
+                <h2 className="text-2xl font-extrabold text-brand-dark sm:text-3xl">Garanta sua vaga</h2>
+                <p className="mt-1 text-sm text-muted-foreground">Inscrição gratuita · Vagas limitadas</p>
+                <div className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-brand-orange/10 px-3 py-1 text-xs font-bold text-brand-orange">
+                  <Sparkles className="h-3.5 w-3.5" /> Acesso às condições exclusivas do evento
+                </div>
+              </div>
+              <RDForm />
+              <p className="mt-4 text-center text-xs text-muted-foreground">
+                Ao se inscrever você concorda em receber comunicações do {cfg.school.shortName}.
+              </p>
+            </div>
+            <div className="absolute -bottom-4 -right-4 -z-10 h-full w-full rounded-3xl bg-white/20" />
+          </div>
+        </div>
+      </header>
+
+      {/* TRUST STRIP */}
+      <section className="border-b bg-white">
+        <div className="mx-auto grid max-w-6xl grid-cols-2 gap-6 px-6 py-8 sm:grid-cols-4">
+          <Stat value={cfg.school.years} label="anos de história" />
+          <Stat value={String(cfg.school.units)} label="unidades" />
+          <Stat value={cfg.school.families} label="famílias acompanhando" />
+          <Stat value="100%" label="foco no aluno" />
+        </div>
+      </section>
+
+      {/* PROPOSAL */}
+      <section className="bg-gradient-soft py-16 sm:py-20">
+        <div className="mx-auto max-w-5xl px-6 text-center">
+          <span className="text-sm font-bold uppercase tracking-wider text-brand-orange">{cfg.proposal.label}</span>
+          <h2 className="mt-3 text-3xl font-extrabold text-brand-dark sm:text-4xl">{cfg.proposal.title}</h2>
+          <p className="mt-5 text-lg text-muted-foreground">{cfg.proposal.text}</p>
+
+          <div className="mt-12 grid gap-6 sm:grid-cols-3">
+            {cfg.proposal.features.map((f) => {
+              const Icon = iconMap[f.icon];
+              return <Feature key={f.title} icon={Icon ? <Icon className="h-6 w-6" /> : null} title={f.title} text={f.text} />;
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* VIDEO */}
+      <section className="bg-white py-16 sm:py-20">
+        <div className="mx-auto max-w-5xl px-6">
+          <div className="mb-8 text-center">
+            <h2 className="text-3xl font-extrabold text-brand-dark sm:text-4xl">{cfg.video.title}</h2>
+            <p className="mt-3 text-muted-foreground">{cfg.video.subtitle}</p>
+          </div>
+          <div className="relative aspect-video overflow-hidden rounded-3xl shadow-card">
+            <iframe
+              className="absolute inset-0 h-full w-full"
+              src={`https://www.youtube.com/embed/${cfg.video.youtubeId}`}
+              title={cfg.video.title}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* ABOUT */}
+      <section className="bg-brand-dark py-16 text-white sm:py-20">
+        <div className="mx-auto grid max-w-6xl gap-10 px-6 lg:grid-cols-2 lg:items-center">
+          <div>
+            <span className="text-sm font-bold uppercase tracking-wider text-brand-orange">{cfg.about.label}</span>
+            <h2 className="mt-3 text-3xl font-extrabold sm:text-4xl">{cfg.about.title}</h2>
+            <p className="mt-5 text-white/80">{cfg.about.text}</p>
+          </div>
+          <div className="rounded-3xl bg-brand-blue-mid p-8 shadow-glow text-white">
+            <h3 className="text-2xl font-extrabold">{cfg.about.ctaTitle}</h3>
+            <p className="mt-2 text-white/90">{cfg.about.ctaText}</p>
+            <a
+              href={`#${cfg.event.formAnchor}`}
+              className="mt-6 inline-flex items-center justify-center rounded-full bg-brand-orange px-7 py-3 text-sm font-extrabold uppercase tracking-wider text-white shadow-card transition-transform hover:-translate-y-0.5"
+            >
+              Quero minha vaga
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* EVENT DETAILS */}
+      <section className="bg-gradient-soft py-16 sm:py-20">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="text-center">
+            <span className="text-sm font-bold uppercase tracking-wider text-brand-orange">O dia do evento</span>
+            <h2 className="mt-3 text-3xl font-extrabold text-brand-dark sm:text-4xl">Como vai funcionar o Portas Abertas</h2>
+            <p className="mt-3 text-muted-foreground">
+              Uma manhã pensada para você sentir, na prática, o que é estudar no {cfg.school.shortName}.
+            </p>
+          </div>
+
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
+            {cfg.event.schedule.map((s) => (
+              <Feature key={s.time} icon={<Clock className="h-6 w-6" />} title={`${s.time}, ${s.title}`} text={s.text} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* TESTIMONIALS */}
+      <section className="bg-white py-16 sm:py-20">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="text-center">
+            <span className="text-sm font-bold uppercase tracking-wider text-brand-orange">Quem já vive o .pandora</span>
+            <h2 className="mt-3 text-3xl font-extrabold text-brand-dark sm:text-4xl">Famílias que confiaram e recomendam</h2>
+          </div>
+
+          <div className="mt-8 relative max-w-lg mx-auto">
+            <Carousel
+              opts={{
+                align: "center",
+                loop: true,
+              }}
+              className="w-full"
+            >
+              <CarouselContent>
+                {cfg.testimonials.map((t) => (
+                  <CarouselItem key={t.name} className="basis-full">
+                    <div className="mx-auto rounded-3xl bg-[#D6EFFF] p-6 sm:p-8 shadow-sm min-h-[400px] flex flex-col justify-between">
+                      <div>
+                        <div className="mb-6 flex justify-center gap-1 text-brand-orange">
+                          {Array.from({ length: 5 }).map((_, i) => (
+                            <Star key={i} className="h-5 w-5 fill-current" />
+                          ))}
+                        </div>
+                        <p className="text-center text-base sm:text-lg italic text-brand-dark leading-relaxed font-medium">
+                          "{t.quote}"
+                        </p>
+                      </div>
+                      <div className="mt-6 text-center">
+                        <p className="font-extrabold text-brand-dark text-lg">{t.name}</p>
+                        <p className="text-sm text-muted-foreground">{t.role}</p>
+                      </div>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <div className="flex justify-center gap-4 mt-8 lg:block">
+                <CarouselPrevious className="static lg:absolute -left-16 top-1/2 lg:-translate-y-1/2 h-12 w-12 border-2 border-brand-orange/20 text-brand-orange hover:bg-brand-orange hover:text-white transition-all bg-white" />
+                <CarouselNext className="static lg:absolute -right-16 top-1/2 lg:-translate-y-1/2 h-12 w-12 border-2 border-brand-orange/20 text-brand-orange hover:bg-brand-orange hover:text-white transition-all bg-white" />
+              </div>
+            </Carousel>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="bg-gradient-soft py-16 sm:py-20">
+        <div className="mx-auto max-w-3xl px-6">
+          <div className="text-center">
+            <span className="text-sm font-bold uppercase tracking-wider text-brand-orange">Perguntas frequentes</span>
+            <h2 className="mt-3 text-3xl font-extrabold text-brand-dark sm:text-4xl">Tire suas dúvidas</h2>
+          </div>
+
+          <Accordion type="single" collapsible className="mt-10 space-y-3">
+            {cfg.faq.map((item, i) => (
+              <AccordionItem key={i} value={`item-${i}`} className="rounded-2xl border-0 bg-white px-5 shadow-card">
+                <AccordionTrigger className="text-left text-base font-bold text-brand-dark hover:no-underline">
+                  {item.q}
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">{item.a}</AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
+      </section>
+
+      {/* GUARANTEES */}
+      <section className="bg-white py-12">
+        <div className="mx-auto grid max-w-6xl gap-6 px-6 sm:grid-cols-3">
+          {cfg.guarantees.map((g) => {
+            const Icon = iconMap[g.icon];
+            return <Guarantee key={g.title} icon={Icon ? <Icon className="h-5 w-5" /> : null} title={g.title} text={g.text} />;
+          })}
+        </div>
+      </section>
+
+      {/* FINAL CTA */}
+      <section className="bg-brand-blue-mid py-16 text-white sm:py-20">
+        <div className="mx-auto max-w-3xl px-6 text-center">
+          <h2 className="text-3xl font-extrabold sm:text-4xl">Vagas limitadas, não deixe para depois</h2>
+          <p className="mt-4 text-white/90">
+            Reserve agora seu lugar no {cfg.event.name} e garanta as condições especiais de matrícula para {cfg.event.year}.
+          </p>
+          <a
+            href={`#${cfg.event.formAnchor}`}
+            className="mt-8 inline-flex items-center justify-center rounded-full bg-brand-orange px-8 py-4 text-sm font-extrabold uppercase tracking-wider text-white shadow-card transition-transform hover:-translate-y-0.5"
+          >
+            Quero garantir minha vaga
+          </a>
+          <p className="mt-4 text-xs text-white/80">{cfg.event.fullDate}</p>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="bg-white py-12">
+        <div className="mx-auto grid max-w-6xl gap-6 px-6 text-center sm:grid-cols-2 sm:text-left">
+          <div>
+            <p className="text-lg font-extrabold text-brand-dark">{cfg.school.name}</p>
+            <p className="mt-2 text-sm text-muted-foreground">{cfg.school.address}</p>
+          </div>
+          <div className="sm:text-right">
+            <a
+              href={`https://wa.me/${cfg.school.whatsapp}`}
+              className="inline-flex items-center gap-2 text-sm font-semibold text-brand-orange hover:underline"
+            >
+              <Phone className="h-4 w-4" /> WhatsApp {cfg.school.whatsappLabel}
+            </a>
+            <p className="mt-2 text-xs text-muted-foreground">© {new Date().getFullYear()} {cfg.school.shortName} educacional</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
+
+function Pill({ icon, label }: { icon: React.ReactNode; label: string }) {
+  return (
+    <span className="inline-flex items-center gap-2 rounded-full bg-brand-blue-mid/10 px-4 py-2 text-sm font-bold text-brand-blue-dark">
+      {icon} {label}
+    </span>
+  );
+}
+
+function Stat({ value, label }: { value: string; label: string }) {
+  return (
+    <div className="text-center">
+      <div className="text-3xl font-extrabold text-brand-orange sm:text-4xl">{value}</div>
+      <div className="mt-1 text-xs uppercase tracking-wider text-muted-foreground">{label}</div>
+    </div>
+  );
+}
+
+function Feature({ icon, title, text }: { icon: React.ReactNode; title: string; text: string }) {
+  return (
+    <div className="rounded-2xl bg-white p-6 text-left shadow-card">
+      <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand-blue-light text-brand-blue-mid">{icon}</div>
+      <h3 className="text-lg font-extrabold text-brand-dark">{title}</h3>
+      <p className="mt-2 text-sm text-muted-foreground">{text}</p>
+    </div>
+  );
+}
+
+function Guarantee({ icon, title, text }: { icon: React.ReactNode; title: string; text: string }) {
+  return (
+    <div className="flex items-start gap-4 rounded-2xl border bg-white p-5">
+      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-blue-light text-brand-blue-mid">{icon}</div>
+      <div>
+        <p className="font-extrabold text-brand-dark">{title}</p>
+        <p className="mt-1 text-sm text-muted-foreground">{text}</p>
+      </div>
+    </div>
+  );
+}
